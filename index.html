@@ -5,17 +5,289 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Ben Baryo's GitHub space">
   <link rel="icon" href="favicon.png">
-  <title>Ben Baryo on GitHub</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Ben Baryo</title>
+  <style>
+    :root {
+      --background-color-base: bisque;
+      --background-color-selected: burlywood;
+      --body-background-color: #474747;
+      --font-size-base: 16px;
+    }
+    body {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-size: var(--font-size-base);
+      gap: .5rem;
+      background-color: var(--body-background-color);
+      color: bisque;
+      font-family: system-ui;
+    }
+    a {
+      color: wheat;
+      &:visited {
+        color: wheat;
+      }
+    }
+    header {
+      display: flex;
+      align-items: center;
+      background-color: #272734;
+      width: 100%;
+      height: 3.5rem;
+      justify-content: space-between;
+      border-radius: 5px;
+      &> * {
+        padding: 0 .5rem;
+      }
+      .logo-and-title {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        .title {
+          font-family: sans-serif;
+          @media (max-width: 500px) {
+            display: none;
+          }
+        }
+      }
+      nav {
+        display: flex;
+        gap: .5rem;
+        a {
+          text-decoration: none;
+        }
+        .active {
+          color: aquamarine;
+        }
+      }
+      .github-icon {
+        width: 2.5rem;
+      }
+      .profile-pic {
+        height: 2.5rem;
+        border-radius: 50%;
+      }
+    }
+    .home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .profile-pic {
+        width: 10rem;
+        border-radius: 50%;
+
+      }
+      .an-unfortunate-haiku {
+        text-align: center;
+        font-family: FangSong, sans-serif;
+      }
+    }
+    #projects {
+      .content {
+        overflow-y: auto;
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        .item {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex: 0 0 30%;
+          padding: 1rem;
+          min-width: 20vw;
+          max-width: 30vw;
+          align-items: center;
+          gap: 1rem;
+          height: 15rem;
+          background-color: #272734;
+          border-radius: 1rem;
+          text-align: center;
+          @media (max-width: 600px) {
+            gap: .5rem;
+            padding: .5rem;
+            .item-header {
+              font-size: large !important;
+            }
+            .item-description {
+              font-size: medium !important;
+              max-height: 15rem;
+              overflow-y: auto;
+            }
+          }
+          .item-header {
+            font-size: larger;
+            font-weight: bold;
+          }
+          .item-links {
+            margin-top: 1.5rem;
+          }
+        }
+      }
+    }
+    #blog {
+      .published-work {
+        list-style-type: none;
+        padding-left: 0;
+        a {
+          text-decoration: none;
+        }
+        li {
+          position: relative;
+          padding-left: 25px;
+          margin-bottom: 1rem;
+          &::before {
+            content: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTggMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjAuMDAwMTgiPjxwYXRoIGZpbGw9IiNkMWQ0ZDYiIGQ9Ik0xMi4xLjZhLjk0NC45NDQgMCAwIDAgLjIgMS4wNGwxLjM1MiAxLjM1M0wxMC4yOCA2LjM3YS45NTYuOTU2IDAgMCAwIDEuMzUgMS4zNWwzLjM4Mi0zLjM4IDEuMzUyIDEuMzUyYS45NDQuOTQ0IDAgMCAwIDEuMDQuMi45NTguOTU4IDAgMCAwIC41OTYtLjg3NVYuOTZhLjk2NC45NjQgMCAwIDAtLjk2LS45NmgtNC4wNTdhLjk1OC45NTggMCAwIDAtLjg4My42eiIvPjxwYXRoIGZpbGw9IiNkMWQ0ZDYiIGQ9Ik0xNCAxMXY1YTIuMDA2IDIuMDA2IDAgMCAxLTIgMkgyYTIuMDA2IDIuMDA2IDAgMCAxLTItMlY2YTIuMDA2IDIuMDA2IDAgMCAxIDItMmg1YTEgMSAwIDAgMSAwIDJIMnYxMGgxMHYtNWExIDEgMCAwIDEgMiAweiIvPjwvc3ZnPg==');
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1rem;
+          }
+        }
+      }
+    }
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-<h1>Ben Baryo on GitHub</h1>
-<h2>WiP</h2>
-<p>Current projects:</p>
-<ul>
-<li><a href="https://REstringer.tech">REstringer</a></li>
-<li><a href="/sudoku/">Sudoku</a></li>
-<li><a href="/tick-tack-toe/">Tick-Tack-Toe (tic-tac-toe)</a></li>
-</ul>
+<header>
+  <span class="logo-and-title">
+  <img src="static/profile-pic.png" alt="Profile pic" class="profile-pic">
+  <span class="title">The Baryo Pages</span>
+  </span>
+  <nav>
+    <a href="#" class="active" data-target="#">Home</a> |
+    <a href="#projects" data-target="#projects">Projects</a> |
+    <a href="#blog" data-target="#blog">Blog</a>
+  </nav>
+  <span class="github-icon" title="Click to view GitHub profile">
+    <a href="https://github.com/ctrl-escp" target="_blank" aria-label="Link to my GitHub profile">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="white" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    </a>
+  </span>
+</header>
+
+<main>
+  <div class="home hide">
+    <img src="favicon.png" alt="Ben Baryo's profile picture" class="profile-pic">
+    <p class="an-unfortunate-haiku">
+      I could not think of <br>
+      any words to welcome you <br>
+      So here's just "Hi..."(ku)
+    </p>
+    <div class="content">
+      <p>
+        Hi, I'm Ben Baryo <br>
+        A security researcher and developer.
+      </p>
+      My domains of knowledge include:
+      <ul>
+        <li>Fraud detection</li>
+        <li>Bot (automation) and anti-bot mechanisms</li>
+        <li>Obfuscation and deobfuscation</li>
+        <li><u>NOT</u> web design (obviously) 🥲</li>
+      </ul>
+      <p>You can find me on <a href="https://twitter.com/ctrl__esc" target="_blank">Twitter</a> or <a
+          href="https://www.linkedin.com/in/bbaryo/">LinkedIn</a></p>
+    </div>
+  </div>
+  <div id="projects" class="hide">
+    <div class="content">
+      <div class="item">
+        <div class="item-header">REstringer</div>
+        <div class="item-description">A JS deobfuscation tool</div>
+        <div class="item-links">
+          <a href="https://github.com/perimeterx/REstringer" target="_blank">repo</a> |
+          <a href="https://www.npmjs.com/package/restringer" target="_blank">npm</a> |
+          <a href="https://REstringer.tech" target="_blank">site</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-header">Obfuscation Detector</div>
+        <div class="item-description">Detect types of JS obfuscation using syntactic structures</div>
+        <div class="item-links">
+          <a href="https://github.com/perimeterx/obfuscation-detector" target="_blank">repo</a> |
+          <a href="https://www.npmjs.com/package/obfuscation-detector" target="_blank">npm</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-header">flAST</div>
+        <div class="item-description">Flatten an Abstract Syntax Tree by placing all the nodes in a single flat array</div>
+        <div class="item-links">
+          <a href="https://github.com/perimeterx/flAST" target="_blank">repo</a> |
+          <a href="https://www.npmjs.com/package/flAST" target="_blank">npm</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-header">Sudoku</div>
+        <div class="item-description">A simple HTML+JS implementation</div>
+        <div class="item-links">
+          <a href="https://github.com/ctrl-escp/sudoku" target="_blank">repo</a> |
+          <a href="/sudoku/" target="_blank">site</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-header">Tick-Tack-Toe (tic-tac-toe)</div>
+        <div class="item-description">A simple HTML+JS implementation</div>
+        <div class="item-links">
+          <a href="https://github.com/ctrl-escp/tick-tack-toe" target="_blank">repo</a> |
+          <a href="/tick-tack-toe/" target="_blank">site</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="blog" class="hide">
+    <p>Here is some of my published work:</p>
+    <ul class="published-work">
+      <li><a href="https://medium.com/@ben.baryo/magecart-and-the-pci-dss-4-0-challenge-is-chatgpt-the-answer-37f4ffb6faf2" target="_blank">Magecart and the PCI-DSS 4.0 Challenge: Is ChatGPT the Answer?</a></li>
+      <li><a href="https://www.humansecurity.com/learn/blog/a-cure-for-the-obscure-javascript-deobfuscation" target="_blank">A Cure for the Obscure: JavaScript De-obfuscation</a></li>
+      <li><a href="https://medium.com/perimeterx/defeating-javascript-obfuscation-6ac44877a944" target="_blank">Defeating Javascript Obfuscation</a></li>
+      <li><a href="https://medium.com/perimeterx/automating-skimmer-deobfuscation-62050d1a50fe" target="_blank">Automating Skimmer Deobfuscation</a></li>
+      <li><a href="https://medium.com/perimeterx/the-far-point-of-a-static-encounter-f6c9c6ef6e5c" target="_blank">The Far Point of a Static Encounter</a></li>
+      <li><a href="https://medium.com/perimeterx/mallrats-an-analysis-of-the-natural-fresh-mall-magecart-attack-5a3cd8494c85" target="_blank">MallRats: An Analysis of the Natural Fresh Mall Magecart Attack</a></li>
+      <li><a href="https://medium.com/perimeterx/the-evolution-of-a-magecart-attack-leveraging-recaptcha-tech-domain-40ff06b8c27" target="_blank">The Evolution of a Magecart Attack Leveraging Recaptcha.tech Domain</a></li>
+      <li><a href="https://medium.com/perimeterx/the-missing-lnkr-8910a2ee4fbd" target="_blank">The Missing LNKR</a></li>
+      <li><a href="https://www.humansecurity.com/tech-engineering-blog/deobfuscating-caesar" target="_blank">Deobfuscating Caesar+</a></li>
+      <li><a href="https://www.humansecurity.com/learn/blog/new-stealth-magecart-attack-bypasses-payment-services-using-iframes" target="_blank">New Stealth Magecart Attack Bypasses Payment Services Using Iframes</a> (co-author)</li>
+      <li><a href="https://www.humansecurity.com/learn/blog/skimming-as-a-service-anatomy-of-a-magecart-attack-toolkit" target="_blank">Skimming-as-a-Service: Anatomy of a Magecart Attack Toolkit</a> (co-author)</li>
+    </ul>
+  </div>
+  <div id="404" class="hide">I seem to have misplaced the content 😥</div>
+</main>
+<script>
+  /**
+   * @param {string} target
+   */
+  function displayContent(target) {
+    // Highlight the selected path on the nav bar
+    const pageNavs = Array.from(document.querySelectorAll('nav a'));
+    pageNavs.forEach(el => {
+      if (el.dataset.target === target) {
+        el.classList.add('active');
+      } else el.classList.remove('active');
+    });
+    const contentElements = Array.from(document.querySelectorAll('main > *'));
+    let found = false;
+    // Display the relevant content
+    const targetId = target.substring(1);
+    contentElements.forEach(el => {
+      if (el.id === targetId) {
+        el.classList.remove('hide');
+        found = true;
+      }
+      else el.classList.add('hide');
+    });
+    if (!found) document.getElementById('404').classList.remove('hide');
+  }
+
+  window.addEventListener('load', () => {
+    window.addEventListener('hashchange', () => displayContent(location.hash || '#'));
+    displayContent(location.hash || '#');
+    document.querySelector('.home>.profile-pic').addEventListener('mouseenter', () => document.querySelector('.home  .profile-pic').src = 'static/profile-pic.png');
+    document.querySelector('.home>.profile-pic').addEventListener('mouseleave', () => document.querySelector('.home  .profile-pic').src = 'favicon.png');
+  });
+</script>
 </body>
 </html>
