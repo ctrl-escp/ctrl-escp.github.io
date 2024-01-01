@@ -1,0 +1,10 @@
+body {
+    background-color: rgba(0, 0, 0, .8);
+    color: white;
+}
+a {
+    color: wheat;
+    &:visited {
+        color: wheat;
+    }
+}
