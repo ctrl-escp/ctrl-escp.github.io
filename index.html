@@ -306,11 +306,17 @@
     if (!found) document.getElementById('404').classList.remove('hide');
   }
 
+  function switchImage(el) {
+    const pic1 = 'static/profile-pic.png';
+    const pic2 = 'favicon.png';
+    el.src = el.src.includes(pic1) ? pic2 : pic1;
+  }
+
   window.addEventListener('load', () => {
     window.addEventListener('hashchange', () => displayContent(location.hash || '#'));
     displayContent(location.hash || '#');
-    document.querySelector('.home .profile-pic').addEventListener('mouseenter', () => document.querySelector('.home  .profile-pic').src = 'static/profile-pic.png');
-    document.querySelector('.home .profile-pic').addEventListener('mouseleave', () => document.querySelector('.home  .profile-pic').src = 'favicon.png');
+    document.querySelectorAll('.profile-pic').forEach(el => el.addEventListener('mouseenter', e => switchImage(e.currentTarget)));
+    document.querySelectorAll('.profile-pic').forEach(el => el.addEventListener('mouseleave', e => switchImage(e.currentTarget)));
   });
 </script>
 </body>
