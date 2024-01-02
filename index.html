@@ -309,8 +309,8 @@
   window.addEventListener('load', () => {
     window.addEventListener('hashchange', () => displayContent(location.hash || '#'));
     displayContent(location.hash || '#');
-    document.querySelector('.home>.profile-pic').addEventListener('mouseenter', () => document.querySelector('.home  .profile-pic').src = 'static/profile-pic.png');
-    document.querySelector('.home>.profile-pic').addEventListener('mouseleave', () => document.querySelector('.home  .profile-pic').src = 'favicon.png');
+    document.querySelector('.home .profile-pic').addEventListener('mouseenter', () => document.querySelector('.home  .profile-pic').src = 'static/profile-pic.png');
+    document.querySelector('.home .profile-pic').addEventListener('mouseleave', () => document.querySelector('.home  .profile-pic').src = 'favicon.png');
   });
 </script>
 </body>
