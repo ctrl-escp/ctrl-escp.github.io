@@ -82,21 +82,32 @@
         text-align: center;
         font-family: FangSong, sans-serif;
       }
+      .banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
     }
     #projects {
       .content {
         overflow-y: auto;
         display: flex;
+        justify-content: center;
         gap: 2rem;
         flex-wrap: wrap;
+        max-width: 100%;
+        @media (max-width: 600px) {
+          gap: .5rem;
+        }
         .item {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          flex: 0 0 30%;
+          flex: 0 0 20%;
           padding: 1rem;
-          min-width: 20vw;
-          max-width: 30vw;
+          min-width: 15vw;
+          max-width: 20vw;
           align-items: center;
           gap: 1rem;
           height: 15rem;
@@ -104,15 +115,19 @@
           border-radius: 1rem;
           text-align: center;
           @media (max-width: 600px) {
-            gap: .5rem;
-            padding: .5rem;
+            gap: 0;
+            /*padding: .5rem;*/
+            width: 50vw !important;
             .item-header {
-              font-size: large !important;
+              font-size: medium !important;
             }
             .item-description {
-              font-size: medium !important;
+              font-size: small !important;
               max-height: 15rem;
               overflow-y: auto;
+            }
+            .item-links {
+              font-size: small !important;
             }
           }
           .item-header {
@@ -121,11 +136,12 @@
           }
           .item-links {
             margin-top: 1.5rem;
+
           }
         }
       }
     }
-    #blog {
+    #articles {
       .published-work {
         list-style-type: none;
         padding-left: 0;
@@ -160,7 +176,7 @@
   <nav>
     <a href="#" class="active" data-target="#">Home</a> |
     <a href="#projects" data-target="#projects">Projects</a> |
-    <a href="#blog" data-target="#blog">Blog</a>
+    <a href="#articles" data-target="#articles">Articles</a>
   </nav>
   <span class="github-icon" title="Click to view GitHub profile">
     <a href="https://github.com/ctrl-escp" target="_blank" aria-label="Link to my GitHub profile">
@@ -171,26 +187,34 @@
 
 <main>
   <div class="home hide">
-    <img src="favicon.png" alt="Ben Baryo's profile picture" class="profile-pic">
-    <p class="an-unfortunate-haiku">
-      I could not think of <br>
+    <div class="banner">
+      <img src="favicon.png" alt="Ben Baryo's profile picture" class="profile-pic">
+      <p class="an-unfortunate-haiku">
+      <i>I could not think of <br>
       any words to welcome you <br>
-      So here's just "Hi..."(ku)
+      So here's just "Hi"...(ku)</i>
     </p>
+    </div>
     <div class="content">
       <p>
         Hi, I'm Ben Baryo <br>
         A security researcher and developer.
       </p>
-      My domains of knowledge include:
-      <ul>
-        <li>Fraud detection</li>
-        <li>Bot (automation) and anti-bot mechanisms</li>
-        <li>Obfuscation and deobfuscation</li>
-        <li><u>NOT</u> web design (obviously) 🥲</li>
-      </ul>
       <p>You can find me on <a href="https://twitter.com/ctrl__esc" target="_blank">Twitter</a> or <a
           href="https://www.linkedin.com/in/bbaryo/">LinkedIn</a></p>
+
+      <p>My domains of expertise include:</p>
+      <ul>
+        <li>Software development - JS (Node.js/browser) and Python</li>
+        <li>Security research</li>
+        <li>Creating research tools</li>
+        <li>Obfuscation and deobfuscation</li>
+        <li>Fraud detection</li>
+        <li>Bot (automation) and anti-bot mechanisms</li>
+        <li>Automating processes</li>
+        <li>Creating and presenting technical content (blogs and presentations)</li>
+        <li>Building high performing (yet poorly looking) websites 🥲</li>
+      </ul>
     </div>
   </div>
   <div id="projects" class="hide">
@@ -238,7 +262,7 @@
       </div>
     </div>
   </div>
-  <div id="blog" class="hide">
+  <div id="articles" class="hide">
     <p>Here is some of my published work:</p>
     <ul class="published-work">
       <li><a href="https://medium.com/@ben.baryo/magecart-and-the-pci-dss-4-0-challenge-is-chatgpt-the-answer-37f4ffb6faf2" target="_blank">Magecart and the PCI-DSS 4.0 Challenge: Is ChatGPT the Answer?</a></li>
