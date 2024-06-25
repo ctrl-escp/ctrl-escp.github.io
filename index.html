@@ -164,15 +164,19 @@
           font-size: larger;
         }
         li {
+          border-radius: 10%;
           position: relative;
-          padding-left: 25px;
+          padding: 0 0 0 2rem;
           margin-bottom: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           &::before {
             content: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTggMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjAuMDAwMTgiPjxwYXRoIGZpbGw9IiNkMWQ0ZDYiIGQ9Ik0xMi4xLjZhLjk0NC45NDQgMCAwIDAgLjIgMS4wNGwxLjM1MiAxLjM1M0wxMC4yOCA2LjM3YS45NTYuOTU2IDAgMCAwIDEuMzUgMS4zNWwzLjM4Mi0zLjM4IDEuMzUyIDEuMzUyYS45NDQuOTQ0IDAgMCAwIDEuMDQuMi45NTguOTU4IDAgMCAwIC41OTYtLjg3NVYuOTZhLjk2NC45NjQgMCAwIDAtLjk2LS45NmgtNC4wNTdhLjk1OC45NTggMCAwIDAtLjg4My42eiIvPjxwYXRoIGZpbGw9IiNkMWQ0ZDYiIGQ9Ik0xNCAxMXY1YTIuMDA2IDIuMDA2IDAgMCAxLTIgMkgyYTIuMDA2IDIuMDA2IDAgMCAxLTItMlY2YTIuMDA2IDIuMDA2IDAgMCAxIDItMmg1YTEgMSAwIDAgMSAwIDJIMnYxMGgxMHYtNWExIDEgMCAwIDEgMiAweiIvPjwvc3ZnPg==');
             position: absolute;
-            left: 0;
-            top: .3rem;
-            width: 1rem;
+            left: .2rem;
+            top: 25%;
+            width: 1.5rem;
           }
           .topic {
             display: inline-block;
@@ -409,59 +413,59 @@
     </div>
   </div>
   <div id="articles" class="hide">
-    <p>Here is some of my published work:</p>
+    <p>Some of my published work:</p>
     <ul class="published-work">
       <li>
         <a href="https://www.humansecurity.com/learn/blog/me-you-and-the-gpu" target="_blank">Me, You, and the GPU</a>
-        <br><span class="topic">JavaScript</span><span class="topic">Captcha</span><span class="topic">Anti-Bot</span>
+        <div class="tags"><span class="topic">JavaScript</span><span class="topic">Captcha</span><span class="topic">Anti-Bot</span></div>
       </li>
       <li>
         <a href="https://medium.com/@ben.baryo/magecart-and-the-pci-dss-4-0-challenge-is-chatgpt-the-answer-37f4ffb6faf2" target="_blank">Magecart and the PCI-DSS 4.0 Challenge: Is ChatGPT the Answer?</a>
-        <br><span class="topic">Magecart</span><span class="topic">ChatGPT</span><span class="topic">PCI-DSS</span><span class="topic">JavaScript</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">ChatGPT</span><span class="topic">PCI-DSS</span><span class="topic">JavaScript</span></div>
       </li>
       <li>
         <a href="https://www.youtube.com/watch?v=NxlULXfOusg" target="_blank">REstringer: Building a JS Deobfuscator (Hebrew video lecture)</a>
-        <br><span class="topic">Deobfuscation</span><span class="topic">AST</span><span class="topic">JavaScript</span>
+        <div class="tags"><span class="topic">Deobfuscation</span><span class="topic">AST</span><span class="topic">JavaScript</span></div>
       </li>
       <li>
         <a href="https://www.humansecurity.com/learn/blog/a-cure-for-the-obscure-javascript-deobfuscation" target="_blank">A Cure for the Obscure: JavaScript De-obfuscation</a>
-        <br><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span></div>
       </li>
       <li>
         <a href="https://medium.com/perimeterx/defeating-javascript-obfuscation-6ac44877a944" target="_blank">Defeating Javascript Obfuscation</a>
-        <br><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span></div>
       </li>
       <li>
         <a href="https://medium.com/perimeterx/automating-skimmer-deobfuscation-62050d1a50fe" target="_blank">Automating Skimmer Deobfuscation</a>
-        <br><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span><span class="topic">Automation</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span><span class="topic">Automation</span></div>
       </li>
       <li>
         <a href="https://medium.com/perimeterx/the-far-point-of-a-static-encounter-f6c9c6ef6e5c" target="_blank">The Far Point of a Static Encounter</a>
-        <br><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">Deobfuscation</span><span class="topic">JavaScript</span></div>
       </li>
       <li>
         <a href="https://medium.com/perimeterx/mallrats-an-analysis-of-the-natural-fresh-mall-magecart-attack-5a3cd8494c85" target="_blank">MallRats: An Analysis of the Natural Fresh Mall Magecart Attack</a>
-        <br><span class="topic">Magecart</span><span class="topic">JavaScript</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">JavaScript</span></div>
       </li>
       <li>
         <a href="https://medium.com/perimeterx/the-evolution-of-a-magecart-attack-leveraging-recaptcha-tech-domain-40ff06b8c27" target="_blank">The Evolution of a Magecart Attack Leveraging Recaptcha.tech Domain</a>
-        <br><span class="topic">Magecart</span><span class="topic">JavaScript</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">JavaScript</span></div>
       </li>
       <li>
         <a href="https://medium.com/perimeterx/the-missing-lnkr-8910a2ee4fbd" target="_blank">The Missing LNKR</a>
-        <br><span class="topic">Adware</span><span class="topic">JavaScript</span><span class="topic">Malware</span>
+        <div class="tags"><span class="topic">Adware</span><span class="topic">JavaScript</span><span class="topic">Malware</span></div>
       </li>
       <li>
         <a href="https://www.humansecurity.com/tech-engineering-blog/deobfuscating-caesar" target="_blank">Deobfuscating Caesar+</a>
-        <br><span class="topic">Magecart</span><span class="topic">JavaScript</span><span class="topic">Python</span><span class="topic">Reverse-Engineering</span><span class="topic">Fraud-Infrastructure</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">JavaScript</span><span class="topic">Python</span><span class="topic">Reverse-Engineering</span><span class="topic">Fraud-Infrastructure</span></div>
       </li>
       <li>
         <a href="https://www.humansecurity.com/learn/blog/new-stealth-magecart-attack-bypasses-payment-services-using-iframes" target="_blank">New Stealth Magecart Attack Bypasses Payment Services Using Iframes</a> (co-author)
-        <br><span class="topic">Magecart</span><span class="topic">JavaScript</span><span class="topic">Paypal-Braintree</span><span class="topic">Fraud-Infrastructure</span><span class="topic">PCI-DSS</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">JavaScript</span><span class="topic">Paypal-Braintree</span><span class="topic">Fraud-Infrastructure</span><span class="topic">PCI-DSS</span></div>
       </li>
       <li>
         <a href="https://www.humansecurity.com/learn/blog/skimming-as-a-service-anatomy-of-a-magecart-attack-toolkit" target="_blank">Skimming-as-a-Service: Anatomy of a Magecart Attack Toolkit</a> (co-author)
-        <br><span class="topic">Magecart</span><span class="topic">JavaScript</span><span class="topic">Inter-toolkit</span><span class="topic">SaaS</span><span class="topic">Fraud-Infrastructure</span>
+        <div class="tags"><span class="topic">Magecart</span><span class="topic">JavaScript</span><span class="topic">Inter-toolkit</span><span class="topic">SaaS</span><span class="topic">Fraud-Infrastructure</span></div>
       </li>
     </ul>
   </div>
