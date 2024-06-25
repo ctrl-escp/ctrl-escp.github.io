@@ -459,7 +459,10 @@
       </li>
     </ul>
   </div>
-  <div id="404" class="hide">I seem to have misplaced the content 😥</div>
+  <div id="404" class="hide">
+    <p>I seem to have misplaced the content 😥</p>
+    <p>Lemme take you back to the main page...</p>
+  </div>
 </main>
 <script>
   /**
@@ -482,7 +485,10 @@
       }
       else el.classList.add('hide');
     });
-    if (!found) document.getElementById('404').classList.remove('hide');
+    if (!found) {
+      document.getElementById('404').classList.remove('hide');
+      setTimeout(() => location.hash = '#', 2000);
+    }
   }
 
   window.addEventListener('load', () => {
