@@ -47,6 +47,7 @@
         display: flex;
         align-items: center;
         gap: .5rem;
+        text-decoration: none;
         .title {
           font-family: sans-serif;
           @media (max-width: 500px) {
@@ -198,10 +199,10 @@
 </head>
 <body>
 <header>
-  <span class="logo-and-title">
+  <a class="logo-and-title" href="#" title="Back to the main page">
   <img src="static/favicon.webp" alt="Profile pic" class="profile-pic" loading="lazy">
   <span class="title">The Baryo Pages</span>
-  </span>
+  </a>
   <nav>
     <a href="#" class="active" data-target="#">Home</a> |
     <a href="#projects" data-target="#projects">Projects</a> |
