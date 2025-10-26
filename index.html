@@ -225,18 +225,28 @@
         }
         .item {
           display: flex;
-          box-shadow: black .4rem .5rem .6rem;
+          box-shadow: 
+            0 4px 8px rgba(0, 0, 0, 0.3),
+            0 2px 4px rgba(0, 0, 0, 0.2);
           flex-direction: column;
           justify-content: space-between;
           flex: 0 0 20%;
-          padding: 1rem;
+          padding: 1.5rem;
           max-width: 20vw;
           align-items: center;
-          gap: .2rem;
-          min-height: 15rem;
-          background-color: #272734;
-          border-radius: 1rem;
+          gap: 1rem;
+          min-height: 18rem;
+          background: linear-gradient(135deg, 
+            #2a2d3e 0%, 
+            #272734 50%, 
+            #252433 100%);
+          border-radius: 1.5rem;
           text-align: center;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          cursor: pointer;
+          border: 1px solid rgba(255, 255, 255, 0.1);
           @media (max-width: 950px) {
             flex: 0 0 40%;
             max-width: 50%;
@@ -244,19 +254,104 @@
           @media (max-width: 600px) {
             flex: 0 0 100%;
             max-width: 100%;
+            min-height: 16rem;
+            padding: 1rem;
           }
+          
+          /* Gradient overlay on hover */
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+              rgba(116, 148, 244, 0.05) 0%, 
+              rgba(41, 163, 236, 0.05) 50%, 
+              rgba(250, 162, 158, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+          }
+          
+          /* Hover effects */
+          &:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+              0 12px 24px rgba(0, 0, 0, 0.4),
+              0 6px 12px rgba(0, 0, 0, 0.3),
+              0 0 0 1px rgba(116, 148, 244, 0.2);
+          }
+          
+          &:hover::before {
+            opacity: 1;
+          }
+          
+          /* Icon hover animation */
+          &:hover .item-img {
+            transform: scale(1.1) rotate(5deg);
+          }
+          
+          /* Header hover effect */
+          &:hover .item-header {
+            color: #7b94f4;
+            transform: translateY(-2px);
+          }
+          
           .item-header {
-            font-size: larger;
-            font-weight: bold;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            color: #f8f9fa;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
           }
+          
           .item-img {
-            min-width: 80px;
-            min-height: 80px;
-            width: 80px;
-            height: 80px;
+            min-width: 90px;
+            min-height: 90px;
+            width: 90px;
+            height: 90px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
           }
+          
+          .item-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #cbd5e0;
+            margin: 0.5rem 0;
+            font-weight: 400;
+          }
+          
           .item-language {
             color: #29A3EC;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.75rem;
+            background: rgba(41, 163, 236, 0.1);
+            border-radius: 1rem;
+            border: 1px solid rgba(41, 163, 236, 0.3);
+            margin: 0.5rem 0;
+          }
+          
+          .item-links {
+            margin-top: auto;
+            padding-top: 1rem;
+            a {
+              color: #a0aec0;
+              text-decoration: none;
+              font-weight: 500;
+              transition: color 0.2s ease;
+              
+              &:hover {
+                color: #7b94f4;
+              }
+            }
           }
         }
       }
