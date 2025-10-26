@@ -215,13 +215,25 @@
       .content {
         padding: 1rem;
         overflow-y: auto;
-        display: flex;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
-        flex-wrap: wrap;
-        max-width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-items: center;
         @media (max-width: 600px) {
-          gap: .5rem;
+          gap: 1rem;
+          grid-template-columns: 1fr;
+          padding: 0.5rem;
+        }
+        @media (min-width: 601px) and (max-width: 950px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media (min-width: 951px) and (max-width: 1400px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        @media (min-width: 1401px) {
+          grid-template-columns: repeat(4, 1fr);
         }
         .item {
           display: flex;
@@ -230,12 +242,13 @@
             0 2px 4px rgba(0, 0, 0, 0.2);
           flex-direction: column;
           justify-content: space-between;
-          flex: 0 0 20%;
           padding: 1.5rem;
-          max-width: 20vw;
+          width: 100%;
+          max-width: 320px;
           align-items: center;
           gap: 1rem;
           min-height: 18rem;
+          margin: 0; /* Ensure no margin interferes with grid gap */
           background: linear-gradient(135deg, 
             #2a2d3e 0%, 
             #272734 50%, 
@@ -247,15 +260,19 @@
           transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           cursor: pointer;
           border: 1px solid rgba(255, 255, 255, 0.1);
-          @media (max-width: 950px) {
-            flex: 0 0 40%;
-            max-width: 50%;
+          
+          /* Staggered entrance animation setup */
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+          
+          &.animate-in {
+            animation: cardEnter 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
           }
+          
           @media (max-width: 600px) {
-            flex: 0 0 100%;
-            max-width: 100%;
             min-height: 16rem;
             padding: 1rem;
+            max-width: 100%;
           }
           
           /* Gradient overlay on hover */
@@ -282,6 +299,7 @@
               0 12px 24px rgba(0, 0, 0, 0.4),
               0 6px 12px rgba(0, 0, 0, 0.3),
               0 0 0 1px rgba(116, 148, 244, 0.2);
+            z-index: 10;
           }
           
           &:hover::before {
@@ -298,6 +316,7 @@
             color: #7b94f4;
             transform: translateY(-2px);
           }
+          
           
           .item-header {
             font-size: 1.25rem;
@@ -406,6 +425,31 @@
       white-space: nowrap;
       border: 0;
     }
+    
+    /* Keyframes for animations */
+    @keyframes cardEnter {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      .item {
+        animation: none !important;
+        transition: none !important;
+      }
+      .item.animate-in {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -489,7 +533,7 @@
         </div>
       </article>
         <article class="item">
-        <svg class="item-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" xml:space="preserve" aria-hidden="true"><path fill="#f2c99e" d="M29,32H3c-1.657,0-3-1.343-3-3V3c0-1.657,1.343-3,3-3h26c1.657,0,3,1.343,3,3v26 C32,30.657,30.657,32,29,32z"/><path fill="#f9e0bd" d="M27,32H3c-1.657,0-3-1.343-3-3V3c0-1.657,1.343-3,3-3h24c1.657,0,3,1.343,3,3v26 C30,30.657,28.657,32,27,32z"/><path fill="#67625D" d="M28,3v17c0,0.552-0.448,1-1,1H3c-0.552,0-1-0.448-1-1V3c0-0.552,0.448-1,1-1h24 C27.552,2,28,2.448,28,3z M27,24H16c-0.552,0-1,0.448-1,1c0,0.552,0.448,1,1,1h11c0.552,0,1-0.448,1-1C28,24.448,27.552,24,27,24z M13,24c-0.552,0-1,0.448-1,1s0.448,1,1,1s1-0.448,1-1S13.552,24,13,24z"/><path fill="#E69D8A" d="M9.5,8h-3C6.224,8,6,7.776,6,7.5S6.224,7,6.5,7h3C9.776,7,10,7.224,10,7.5S9.776,8,9.5,8z M10,9.5C10,9.224,9.776,9,9.5,9h-3C6.224,9,6,9.224,6,9.5S6.224,10,6.5,10h3C9.776,10,10,9.776,10,9.5z M10,11.5 c0-0.276-0.224-0.5-0.5-0.5h-3C6.224,11,6,11.224,6,11.5S6.224,12,6.5,12h3C9.776,12,10,11.776,10,11.5z M10,13.5 c0-0.276-0.224-0.5-0.5-0.5h-3C6.224,13,6,13.224,6,13.5S6.224,14,6.5,14h3C9.776,14,10,13.776,10,13.5z"/><path fill="#98D3BC" d="M24.5,16h-17C7.224,16,7,15.776,7,15.5S7.224,15,7.5,15h17c0.276,0,0.5,0.224,0.5,0.5 S24.776,16,24.5,16z M23,13.5c0-0.276-0.224-0.5-0.5-0.5h-11c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h11 C22.776,14,23,13.776,23,13.5z"/><path fill="#FFF2DF" d="M6.5,6h-1C5.224,6,5,5.776,5,5.5S5.224,5,5.5,5h1C6.776,5,7,5.224,7,5.5S6.776,6,6.5,6z M25,7.5 C25,7.224,24.776,7,24.5,7h-13C11.224,7,11,7.224,11,7.5S11.224,8,11.5,8h13C24.776,8,25,7.776,25,7.5z M23,9.5 C23,9.224,22.776,9,22.5,9h-11C11.224,9,11,9.224,11,9.5s0.224,0.5,0.5,0.5h11C22.776,10,23,9.776,23,9.5z M25,11.5 c0-0.276-0.224-0.5-0.5-0.5h-13c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h13C24.776,12,25,11.776,25,11.5z M7,17.5 C7,17.224,6.776,17,6.5,17h-1C5.224,17,5,17.224,5,17.5S5.224,18,5.5,18h1C6.776,18,7,17.776,7,17.5z"/></svg>
+        <svg class="item-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" xml:space="preserve" aria-hidden="true"><path fill="#f2c99e" d="M29,32H3c-1.657,0-3-1.343-3-3V3c0-1.657,1.343-3,3-3h26c1.657,0,3,1.343,3,3v26 C32,30.657,30.657,32,29,32z"/><path fill="#f9e0bd" d="M27,32H3c-1.657,0-3-1.343-3-3V3c0-1.657,1.343-3,3-3h24c1.657,0,3,1.343,3,3v26 C30,30.657,28.657,32,27,32z"/><path fill="#67625D" d="M28,3v17c0,0.552-0.448,1-1,1H3c-0.552,0-1-0.448-1-1V3c0-0.552,0.448-1,1-1h24 C27.552,2,28,2.448,28,3z M27,24H16c-0.552,0-1,0.448-1,1c0,0.552,0.448,1,1,1h11c0.552,0,1-0.448,1-1C28,24.448,27.552,24,27,24z M13,24c-0.552,0-1,0.448-1,1s0.448,1,1,1s1-0.448,1-1S13.552,24,13,24z"/><path fill="#E69D8A" d="M9.5,8h-3C6.224,8,6,7.776,6,7.5S6.224,7,6.5,7h3C9.776,7,10,7.224,10,7.5S9.776,8,9.5,8z M10,9.5C10,9.224,9.776,9,9.5,9h-3C6.224,9,6,9.224,6,9.5S6.224,10,6.5,10h3C9.776,10,10,9.776,10,9.5z M10,11.5 c0-0.276-0.224-0.5-0.5-0.5h-3C6.224,11,6,11.224,6,11.5S6.224,12,6.5,12h3C9.776,12,10,11.776,10,11.5z M10,13.5 c0-0.276-0.224-0.5-0.5-0.5h-3C6.224,13,6,13.224,6,13.5S6.224,14,6.5,14h3C9.776,14,10,13.776,10,13.5z"/><path fill="#98D3BC" d="M24.5,16h-17C7.224,16,7,15.776,7,15.5S7.224,15,7.5,15h17c0.276,0,0.5,0.224,0.5,0.5 S24.776,16,24.5,16z M23,13.5c0-0.276-0.224-0.5-0.5-0.5h-11c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h11 C22.776,14,23,13.776,23,13.5z"/><path fill="#FFF2DF" d="M6.5,6h-1C5.224,6,5,5.776,5,5.5S5.224,5,5.5,5h1C6.776,5,7,5.224,7,5.5S6.776,6,6.5,6z M25,7.5 C25,7.224,24.776,7,24.5,7h-13C11.224,7,11,7.224,11,7.5S11.224,8,11.5,8h13C24.776,8,25,7.776,25,7.5z M23,9.5 C23,9.224,22.776,9,22.5,9h-11C11.224,9,11,9.224,11,9.5s0.224,0.5,0.5,0.5h11C22.776,10,23,9.776,23,9.5z M25,11.5 c0-0.276-0.224-0.5-0.5-0.5h-13c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h13C24.776,12,25,11.776,25,11.5z M7,17.5 C7,17.224,6.776,17,6.5,17h-1C5.224,17,5,17.224,5,17.5S5.224,18,5.5,18h1C6.776,18,7,17.776,7=17.5z"/></svg>
         <h3 class="item-header">flAST</h3>
         <div class="item-description">Flatten an Abstract Syntax Tree by placing all the nodes in a single flat array</div>
         <div class="item-language">JavaScript</div>
@@ -710,14 +754,56 @@
       if (el.id === targetId) {
         el.classList.remove('hide');
         found = true;
+        
+        // Trigger staggered animations for project cards
+        if (targetId === 'projects') {
+          animateProjectCards();
+        }
       }
-      else el.classList.add('hide');
+      else {
+        el.classList.add('hide');
+        // Reset project cards animation state when leaving projects
+        if (el.id === 'projects') {
+          resetProjectCards();
+        }
+      }
     });
     if (!found) {
       document.getElementById('404').classList.remove('hide');
       setTimeout(() => location.hash = '#', 2000);
     }
   }
+  
+  /**
+   * Animate project cards with staggered entrance
+   */
+  function animateProjectCards() {
+    const cards = document.querySelectorAll('#projects .item');
+    cards.forEach((card, index) => {
+      // Reset animation state
+      card.classList.remove('animate-in');
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px) scale(0.95)';
+      
+      // Trigger animation with staggered delay
+      setTimeout(() => {
+        card.classList.add('animate-in');
+      }, index * 100 + 50); // 100ms stagger delay + 50ms initial delay
+    });
+  }
+  
+  /**
+   * Reset project cards animation state
+   */
+  function resetProjectCards() {
+    const cards = document.querySelectorAll('#projects .item');
+    cards.forEach(card => {
+      card.classList.remove('animate-in');
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px) scale(0.95)';
+    });
+  }
+  
 
   window.addEventListener('load', () => {
     window.addEventListener('hashchange', () => displayContent(location.hash || '#'));
