@@ -179,35 +179,457 @@
       }
     }
     .home {
+      position: relative;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      .profile-pic {
-        width: 10rem;
-        border-radius: 50%;
+      justify-content: center;
+      padding: 2rem 1rem;
+      overflow: hidden;
+      
+      /* Hero background */
+      .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, 
+          rgba(48, 48, 125, 0.05) 0%, 
+          rgba(41, 163, 236, 0.08) 50%, 
+          rgba(250, 162, 158, 0.05) 100%);
+        z-index: 0;
       }
-      .an-unfortunate-haiku {
-        text-align: center;
-        font-family: FangSong, sans-serif;
+      
+      /* Geometric shapes */
+      .geometric-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        
+        .shape {
+          position: absolute;
+          border-radius: 50%;
+          background: linear-gradient(135deg, 
+            rgba(116, 148, 244, 0.1) 0%, 
+            rgba(41, 163, 236, 0.1) 100%);
+          animation: floatShape 20s ease-in-out infinite;
+          
+          &.shape-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: -5%;
+            animation-delay: 0s;
+          }
+          
+          &.shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: -3%;
+            animation-delay: 7s;
+          }
+          
+          &.shape-3 {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            right: 15%;
+            animation-delay: 14s;
+          }
+        }
       }
-      .banner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      
+      /* Main hero container */
+      .hero-container {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        max-width: 1400px;
         width: 100%;
+        margin: 0 auto;
+        
+        @media (min-width: 1024px) {
+          grid-template-columns: 1fr 1.2fr;
+          gap: 4rem;
+          align-items: start;
+        }
       }
-      .find-me {
-        align-items: center;
+      
+      /* Hero left section */
+      .hero-left {
         display: flex;
-        gap: .3rem;
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        
+        @media (min-width: 1024px) {
+          text-align: left;
+        }
       }
-      .highlight {
-        color: #FAA29E;
+      
+      /* Profile section */
+      .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        
+        @media (min-width: 1024px) {
+          align-items: flex-start;
+        }
       }
-      .link-icon {
-        svg {
+      
+      /* Enhanced profile frame */
+      .profile-frame {
+        position: relative;
+        display: inline-block;
+        
+        .profile-pic.enhanced {
+          width: 12rem;
+          height: 12rem;
+          border-radius: 50%;
+          border: 4px solid rgba(116, 148, 244, 0.3);
+          box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 0 8px rgba(116, 148, 244, 0.1),
+            inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          
+          @media (max-width: 768px) {
+        width: 10rem;
+            height: 10rem;
+            border-width: 3px;
+          }
+          
+          &:hover, &:focus {
+            transform: scale(1.05);
+            border-color: rgba(116, 148, 244, 0.5);
+            box-shadow: 
+              0 12px 48px rgba(0, 0, 0, 0.4),
+              0 0 0 8px rgba(116, 148, 244, 0.2),
+              inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+            outline: 2px solid rgba(116, 148, 244, 0.8);
+            outline-offset: 4px;
+          }
+        }
+        
+        .profile-glow {
+          position: absolute;
+          top: -8px;
+          left: -8px;
+          right: -8px;
+          bottom: -8px;
+        border-radius: 50%;
+          background: linear-gradient(45deg, 
+            rgba(116, 148, 244, 0.2) 0%, 
+            rgba(41, 163, 236, 0.2) 50%, 
+            rgba(250, 162, 158, 0.2) 100%);
+          opacity: 0;
+          animation: pulseGlow 4s ease-in-out infinite;
+          z-index: -1;
+        }
+      }
+      
+      /* Introduction content */
+      .intro-content {
+        .name-heading {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-weight: 800;
+          margin: 0 0 0.5rem 0;
+          line-height: 1.1;
+        }
+        
+        .gradient-text {
+          background: linear-gradient(135deg, 
+            #7b94f4 0%, 
+            #29A3EC 50%, 
+            #FAA29E 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientShift 6s ease-in-out infinite;
+        }
+        
+        .tagline {
+          font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+          color: #cbd5e0;
+          margin: 0 0 1.5rem 0;
+          font-weight: 500;
+        }
+        
+        .typewriter-text {
+          display: inline-block;
+          border-right: 2px solid #7b94f4;
+          padding-right: 2px;
+          animation: blink 1s infinite;
+        }
+        
+      }
+      
+      /* Haiku section */
+      .haiku-section {
+      .an-unfortunate-haiku {
+        font-family: FangSong, sans-serif;
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: #a0aec0;
+          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 1rem;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          
+          &.floating {
+            animation: float 6s ease-in-out infinite;
+          }
+        }
+      }
+      
+      /* Hero right section */
+      .hero-right {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        
+        @media (max-width: 768px) {
+          gap: 2rem;
+        }
+      }
+      
+      /* Section titles */
+      .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #f8f9fa;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+        
+        @media (min-width: 1024px) {
+          text-align: left;
+        }
+      }
+      
+      /* Expertise grid */
+      .expertise-section {
+        .expertise-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          
+          @media (min-width: 640px) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          
+          .expertise-card {
+        display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, 
+              rgba(42, 45, 62, 0.6) 0%, 
+              rgba(39, 39, 52, 0.6) 100%);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+            
+            @media (max-width: 768px) {
+              padding: 1rem;
+              gap: 0.875rem;
+            }
+            
+            &.animate-in {
+              animation: cardSlideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            }
+            
+            &:hover, &:focus-within {
+              transform: translateY(-4px);
+              background: linear-gradient(135deg, 
+                rgba(42, 45, 62, 0.8) 0%, 
+                rgba(39, 39, 52, 0.8) 100%);
+              border-color: rgba(116, 148, 244, 0.3);
+              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            }
+            
+            /* Touch-friendly hover for mobile */
+            @media (hover: none) and (pointer: coarse) {
+              &:hover {
+                transform: none;
+              }
+              
+              &:active {
+                transform: scale(0.98);
+              }
+            }
+            
+            .card-icon {
+              font-size: 1.5rem;
+              filter: grayscale(0.3);
+              transition: all 0.3s ease;
+            }
+            
+            &:hover .card-icon {
+              filter: grayscale(0);
+              transform: scale(1.1);
+            }
+            
+            .card-content {
+              flex: 1;
+              
+              h4 {
+                font-size: 1rem;
+                font-weight: 600;
+                color: #f8f9fa;
+                margin: 0 0 0.5rem 0;
+                line-height: 1.3;
+              }
+              
+              p {
+                font-size: 0.875rem;
+                color: #a0aec0;
+                margin: 0;
+                line-height: 1.4;
+              }
+            }
+          }
+        }
+      }
+      
+      /* Social section */
+      .social-section {
+        .social-links.enhanced {
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+          
+          @media (min-width: 1024px) {
+            justify-content: flex-start;
+          }
+          
+          .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, 
+              rgba(42, 45, 62, 0.6) 0%, 
+              rgba(39, 39, 52, 0.6) 100%);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            
+            &.floating {
+              animation: float 6s ease-in-out infinite;
+              
+              &:nth-child(2) {
+                animation-delay: 2s;
+              }
+              
+              &:nth-child(3) {
+                animation-delay: 4s;
+              }
+            }
+            
+            &:hover, &:focus {
+              transform: translateY(-6px) scale(1.05);
+              background: linear-gradient(135deg, 
+                rgba(42, 45, 62, 0.8) 0%, 
+                rgba(39, 39, 52, 0.8) 100%);
+              border-color: rgba(116, 148, 244, 0.4);
+              box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+              outline: 2px solid rgba(116, 148, 244, 0.6);
+              outline-offset: 2px;
+            }
+            
+            /* Touch-friendly interactions for mobile */
+            @media (hover: none) and (pointer: coarse) {
+              &:hover {
+                transform: none;
+              }
+              
+              &:active {
+                transform: scale(0.95);
+                background: linear-gradient(135deg, 
+                  rgba(42, 45, 62, 0.9) 0%, 
+                  rgba(39, 39, 52, 0.9) 100%);
+              }
+            }
+            
+            @media (max-width: 480px) {
+              padding: 0.875rem;
+              gap: 0.375rem;
+              
+              .social-icon {
+                width: 2rem;
           height: 2rem;
-          margin-bottom: -.5rem;
+              }
+              
+              .social-label {
+                font-size: 0.8rem;
+              }
+            }
+            
+            .social-icon {
+              width: 2.5rem;
+              height: 2.5rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease;
+              
+              svg {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            
+            &:hover .social-icon {
+              transform: rotate(10deg) scale(1.1);
+            }
+            
+            .social-label {
+              font-size: 0.875rem;
+              font-weight: 500;
+              color: #a0aec0;
+              transition: color 0.3s ease;
+            }
+            
+            &:hover .social-label {
+              color: #f8f9fa;
+            }
+            
+            /* Tooltip styles */
+            &[data-tooltip]:hover::before {
+              content: attr(data-tooltip);
+              position: absolute;
+              bottom: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              background: rgba(0, 0, 0, 0.9);
+              color: white;
+              padding: 0.5rem 0.75rem;
+              border-radius: 0.5rem;
+              font-size: 0.75rem;
+              white-space: nowrap;
+              z-index: 1000;
+              margin-bottom: 0.5rem;
+              opacity: 0;
+              animation: fadeInTooltip 0.3s ease forwards;
+            }
+          }
         }
       }
     }
@@ -538,6 +960,80 @@
       }
     }
     
+    /* Home section animations */
+    @keyframes floatShape {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      33% {
+        transform: translateY(-30px) rotate(120deg);
+      }
+      66% {
+        transform: translateY(15px) rotate(240deg);
+      }
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.3;
+        transform: scale(1.05);
+      }
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+    
+    @keyframes blink {
+      0%, 50% {
+        border-color: #7b94f4;
+      }
+      51%, 100% {
+        border-color: transparent;
+      }
+    }
+    
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @keyframes cardSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInTooltip {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(5px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    
     
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
@@ -555,6 +1051,27 @@
       }
       #articles .published-work li:hover {
         transform: none !important;
+      }
+      
+      /* Home section reduced motion */
+      .home .shape,
+      .home .profile-glow,
+      .home .gradient-text,
+      .home .typewriter-text,
+      .home .floating,
+      .home .expertise-card,
+      .home .social-link {
+        animation: none !important;
+      }
+      
+      .home .expertise-card.animate-in,
+      .home .expertise-card {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      
+      .home .typewriter-text {
+        border-right: none !important;
       }
     }
   </style>
@@ -579,40 +1096,143 @@
 
 <main role="main" aria-live="polite">
   <section class="home hide" aria-labelledby="home-heading">
-    <div class="banner">
-      <img src="static/favicon.webp" alt="Ben Baryo's profile picture" class="profile-pic" loading="lazy" height="160" width="160">
-      <p class="an-unfortunate-haiku">
+    <div class="hero-background">
+      <div class="geometric-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </div>
+    
+    <div class="hero-container">
+      <div class="hero-left">
+        <div class="profile-section">
+          <div class="profile-frame">
+            <img src="static/favicon.webp" alt="Ben Baryo's profile picture" class="profile-pic enhanced" loading="lazy" height="160" width="160">
+            <div class="profile-glow"></div>
+          </div>
+          
+          <div class="intro-content">
+            <h2 id="home-heading" class="name-heading">
+              <span class="gradient-text">Ben Baryo</span>
+            </h2>
+            <p class="tagline">
+              <span class="typewriter-text" data-text="Web Security Researcher & Full-Stack Developer">Web Security Researcher & Full-Stack Developer</span>
+            </p>
+          </div>
+        </div>
+        
+        <div class="haiku-section">
+          <div class="an-unfortunate-haiku floating">
       <i>I could not think of <br>
       any words to welcome you <br>
       So here's just "Hi"...(ku)</i>
-    </p>
     </div>
-    <div class="content">
-      <h2 id="home-heading" class="sr-only">About Me</h2>
-      <p>
-        Hi, I'm Ben Baryo <br>
-        A web security researcher and a full-stack developer
-      </p>
-      <p class="find-me">
-        You can find me on <a class="link-icon" href="https://twitter.com/ctrl__esc" target="_blank" aria-label="Follow me on Twitter"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true"><path transform="translate(-300.000000, -164.000000)" fill="#00AAEC" d="M348,168.735283 C346.236309,169.538462 344.337383,170.081618 342.345483,170.324305 C344.379644,169.076201 345.940482,167.097147 346.675823,164.739617 C344.771263,165.895269 342.666667,166.736006 340.418384,167.18671 C338.626519,165.224991 336.065504,164 333.231203,164 C327.796443,164 323.387216,168.521488 323.387216,174.097508 C323.387216,174.88913 323.471738,175.657638 323.640782,176.397255 C315.456242,175.975442 308.201444,171.959552 303.341433,165.843265 C302.493397,167.339834 302.008804,169.076201 302.008804,170.925244 C302.008804,174.426869 303.747139,177.518238 306.389857,179.329722 C304.778306,179.280607 303.256911,178.821235 301.9271,178.070061 L301.9271,178.194294 C301.9271,183.08848 305.322064,187.17082 309.8299,188.095341 C309.004402,188.33225 308.133826,188.450704 307.235077,188.450704 C306.601162,188.450704 305.981335,188.390033 305.381229,188.271578 C306.634971,192.28169 310.269414,195.2026 314.580032,195.280607 C311.210424,197.99061 306.961789,199.605634 302.349709,199.605634 C301.555203,199.605634 300.769149,199.559408 300,199.466956 C304.358514,202.327194 309.53689,204 315.095615,204 C333.211481,204 343.114633,188.615385 343.114633,175.270495 C343.114633,174.831347 343.106181,174.392199 343.089276,173.961719 C345.013559,172.537378 346.684275,170.760563 348,168.735283"/></svg></a>
-        or <a class="link-icon" href="https://www.linkedin.com/in/bbaryo/" aria-label="Connect with me on LinkedIn"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true"><path fill="#0A66C2" d="M12.225 12.225h-1.778V9.44c0-.664-.012-1.519-.925-1.519-.926 0-1.068.724-1.068 1.47v2.834H6.676V6.498h1.707v.783h.024c.348-.594.996-.95 1.684-.925 1.802 0 2.135 1.185 2.135 2.728l-.001 3.14zM4.67 5.715a1.037 1.037 0 01-1.032-1.031c0-.566.466-1.032 1.032-1.032.566 0 1.031.466 1.032 1.032 0 .566-.466 1.032-1.032 1.032zm.889 6.51h-1.78V6.498h1.78v5.727zM13.11 2H2.885A.88.88 0 002 2.866v10.268a.88.88 0 00.885.866h10.226a.882.882 0 00.889-.866V2.865a.88.88 0 00-.889-.864z"/></svg></a>
-        or <a class="link-icon" href="https://github.com/ctrl-escp" target="_blank" aria-label="View my GitHub profile">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill="white" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
-      </p>
-
-      <p>My domains of expertise include:</p>
-      <ul>
-        <li><span class="highlight">Web security research</span> - focusing on emerging threats and mitigation strategies</li>
-        <li><span class="highlight">Software development</span> - specializing in JavaScript (Node.js and browser-based) and Python</li>
-        <li>Skilled in designing and <span class="highlight">developing specialized research tools</span> to streamline security analysis</li>
-        <li>Advanced knowledge in <span class="highlight">obfuscation and deobfuscation techniques</span> to protect and penetrate software systems</li>
-        <li>Experienced in <span class="highlight">fraud detection methodologies and technologies</span>, identifying and preventing fraudulent activities effectively</li>
-        <li>In-depth understanding of <span class="highlight">bot mechanisms and anti-bot technologies</span>, enhancing web security and user integrity</li>
-        <li>Proficient in <span class="highlight">automating processes</span>, improving operational efficiency through innovative automation solutions</li>
-        <li>Continuous exploration and <span class="highlight">research into new technologies</span> to stay ahead of industry trends and advancements</li>
-        <li>Accomplished in <span class="highlight">creating and delivering technical content</span>, including detailed blog posts and engaging presentations</li>
-        <li>Capable of <span class="highlight">building high-performing websites</span>, focusing on functionality over aesthetics 🥲</li>
-      </ul>
+        </div>
+      </div>
+      
+      <div class="hero-right">
+        <div class="expertise-section">
+          <h3 class="section-title">Areas of Expertise</h3>
+          <div class="expertise-grid">
+            <div class="expertise-card animate-in" data-delay="0">
+              <div class="card-icon">🔒</div>
+              <div class="card-content">
+                <h4>Web Security Research</h4>
+                <p>Focusing on emerging threats and mitigation strategies</p>
+              </div>
+            </div>
+            
+            <div class="expertise-card animate-in" data-delay="100">
+              <div class="card-icon">💻</div>
+              <div class="card-content">
+                <h4>Software Development</h4>
+                <p>Specializing in JavaScript (Node.js and browser-based) and Python</p>
+              </div>
+            </div>
+            
+            <div class="expertise-card animate-in" data-delay="200">
+              <div class="card-icon">🛠️</div>
+              <div class="card-content">
+                <h4>Research Tools Development</h4>
+                <p>Designing specialized tools to streamline security analysis</p>
+              </div>
+            </div>
+            
+            <div class="expertise-card animate-in" data-delay="300">
+              <div class="card-icon">🔍</div>
+              <div class="card-content">
+                <h4>Obfuscation & Deobfuscation</h4>
+                <p>Advanced techniques to protect and penetrate software systems</p>
+              </div>
+            </div>
+            
+            <div class="expertise-card animate-in" data-delay="400">
+              <div class="card-icon">🛡️</div>
+              <div class="card-content">
+                <h4>Fraud Detection</h4>
+                <p>Methodologies and technologies for identifying fraudulent activities</p>
+              </div>
+            </div>
+            
+            <div class="expertise-card animate-in" data-delay="500">
+              <div class="card-icon">🤖</div>
+              <div class="card-content">
+                <h4>Bot & Anti-Bot Technologies</h4>
+                <p>Enhancing web security and user integrity</p>
+              </div>
+            </div>
+            
+            <div class="expertise-card animate-in" data-delay="600">
+              <div class="card-icon">⚡</div>
+              <div class="card-content">
+                <h4>Process Automation</h4>
+                <p>Improving operational efficiency through innovative solutions</p>
+              </div>
+            </div>
+            
+            <div class="expertise-card animate-in" data-delay="700">
+              <div class="card-icon">📝</div>
+              <div class="card-content">
+                <h4>Technical Content Creation</h4>
+                <p>Detailed blog posts and engaging presentations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="social-section">
+          <h3 class="section-title">Connect With Me</h3>
+          <div class="social-links enhanced">
+            <a class="social-link floating" href="https://twitter.com/ctrl__esc" target="_blank" aria-label="Follow me on Twitter" data-tooltip="Follow me on Twitter">
+              <div class="social-icon twitter">
+                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+                  <path transform="translate(-300.000000, -164.000000)" fill="#00AAEC" d="M348,168.735283 C346.236309,169.538462 344.337383,170.081618 342.345483,170.324305 C344.379644,169.076201 345.940482,167.097147 346.675823,164.739617 C344.771263,165.895269 342.666667,166.736006 340.418384,167.18671 C338.626519,165.224991 336.065504,164 333.231203,164 C327.796443,164 323.387216,168.521488 323.387216,174.097508 C323.387216,174.88913 323.471738,175.657638 323.640782,176.397255 C315.456242,175.975442 308.201444,171.959552 303.341433,165.843265 C302.493397,167.339834 302.008804,169.076201 302.008804,170.925244 C302.008804,174.426869 303.747139,177.518238 306.389857,179.329722 C304.778306,179.280607 303.256911,178.821235 301.9271,178.070061 L301.9271,178.194294 C301.9271,183.08848 305.322064,187.17082 309.8299,188.095341 C309.004402,188.33225 308.133826,188.450704 307.235077,188.450704 C306.601162,188.450704 305.981335,188.390033 305.381229,188.271578 C306.634971,192.28169 310.269414,195.2026 314.580032,195.280607 C311.210424,197.99061 306.961789,199.605634 302.349709,199.605634 C301.555203,199.605634 300.769149,199.559408 300,199.466956 C304.358514,202.327194 309.53689,204 315.095615,204 C333.211481,204 343.114633,188.615385 343.114633,175.270495 C343.114633,174.831347 343.106181,174.392199 343.089276,173.961719 C345.013559,172.537378 346.684275,170.760563 348,168.735283"/>
+                </svg>
+              </div>
+              <span class="social-label">Twitter</span>
+            </a>
+            
+            <a class="social-link floating" href="https://www.linkedin.com/in/bbaryo/" aria-label="Connect with me on LinkedIn" data-tooltip="Connect on LinkedIn">
+              <div class="social-icon linkedin">
+                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+                  <path fill="#0A66C2" d="M12.225 12.225h-1.778V9.44c0-.664-.012-1.519-.925-1.519-.926 0-1.068.724-1.068 1.47v2.834H6.676V6.498h1.707v.783h.024c.348-.594.996-.95 1.684-.925 1.802 0 2.135 1.185 2.135 2.728l-.001 3.14zM4.67 5.715a1.037 1.037 0 01-1.032-1.031c0-.566.466-1.032 1.032-1.032.566 0 1.031.466 1.032 1.032 0 .566-.466 1.032-1.032 1.032zm.889 6.51h-1.78V6.498h1.78v5.727zM13.11 2H2.885A.88.88 0 002 2.866v10.268a.88.88 0 00.885.866h10.226a.882.882 0 00.889-.866V2.865a.88.88 0 00-.889-.864z"/>
+                </svg>
+              </div>
+              <span class="social-label">LinkedIn</span>
+            </a>
+            
+            <a class="social-link floating" href="https://github.com/ctrl-escp" target="_blank" aria-label="View my GitHub profile" data-tooltip="View GitHub Profile">
+              <div class="social-icon github">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true">
+                  <path fill="white" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+              </div>
+              <span class="social-label">GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section id="projects" class="hide" aria-labelledby="projects-heading">
@@ -866,12 +1486,23 @@
         if (targetId === 'projects') {
           animateProjectCards();
         }
+        // Initialize home section animations
+        else if (targetId === '' || targetId === 'home') {
+          // Small delay to let the section show
+          setTimeout(() => {
+            initHomeAnimations();
+          }, 100);
+        }
       }
       else {
         el.classList.add('hide');
         // Reset project cards animation state when leaving projects
         if (el.id === 'projects') {
           resetProjectCards();
+        }
+        // Reset home animations when leaving home
+        else if (el.classList.contains('home')) {
+          resetHomeAnimations();
         }
       }
     });
@@ -908,6 +1539,152 @@
       card.classList.remove('animate-in');
       card.style.opacity = '0';
       card.style.transform = 'translateY(30px) scale(0.95)';
+    });
+  }
+  
+  /**
+   * Advanced typewriter effect with text cycling and backspace animation
+   */
+  function typewriterEffect(element, originalText, speed = 80) {
+    if (!element || !originalText) return;
+    
+    const messages = [
+      originalText, // "Web Security Researcher & Full-Stack Developer"
+      "0bfu5c471on 3xp3r7", // obfuscation expert
+      "Paronomasiac / Punster" // wordplay expert
+    ];
+    
+    let currentMessageIndex = 0;
+    let currentPhase = 'typing'; // typing, pause, backspacing
+    let charIndex = 0;
+    let currentText = '';
+    let isRunning = true;
+    
+    element.textContent = '';
+    element.style.borderRight = '2px solid #7b94f4';
+    element.style.animation = 'blink 1s infinite';
+    
+    // Store stop function on element for cleanup
+    element.stopTypewriter = () => {
+      isRunning = false;
+    };
+    
+    function animate() {
+      if (!isRunning) return; // Stop if cleanup was called
+      
+      const currentMessage = messages[currentMessageIndex];
+      
+      switch(currentPhase) {
+        case 'typing':
+          if (charIndex < currentMessage.length) {
+            currentText += currentMessage.charAt(charIndex);
+            element.textContent = currentText;
+            charIndex++;
+            element.timeoutId = setTimeout(animate, speed);
+          } else {
+            // Pause after typing current message
+            currentPhase = 'pause';
+            element.timeoutId = setTimeout(animate, 2000); // 2 second pause
+          }
+          break;
+          
+        case 'pause':
+          // Start backspacing current message
+          currentPhase = 'backspacing';
+          animate();
+          break;
+          
+        case 'backspacing':
+          if (currentText.length > 0) {
+            currentText = currentText.slice(0, -1);
+            element.textContent = currentText;
+            element.timeoutId = setTimeout(animate, speed * 0.6); // Backspace slightly faster
+          } else {
+            // Move to next message and reset for typing
+            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+            currentPhase = 'typing';
+            charIndex = 0;
+            element.timeoutId = setTimeout(animate, 1000); // 1 second pause before next message
+          }
+          break;
+      }
+    }
+    
+    // Start the animation after a small delay
+    element.timeoutId = setTimeout(animate, 500);
+  }
+  
+  /**
+   * Animate expertise cards with staggered entrance
+   */
+  function animateExpertiseCards() {
+    const cards = document.querySelectorAll('.home .expertise-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const delay = parseInt(card.dataset.delay) || 0;
+          
+          setTimeout(() => {
+            card.classList.add('animate-in');
+          }, delay);
+          
+          observer.unobserve(card);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  }
+  
+  /**
+   * Initialize home section animations
+   */
+  function initHomeAnimations() {
+    // Typewriter effect
+    const typewriterElement = document.querySelector('.typewriter-text');
+    if (typewriterElement) {
+      const text = typewriterElement.dataset.text || typewriterElement.textContent;
+      // Small delay to let the page settle
+      setTimeout(() => {
+        typewriterEffect(typewriterElement, text, 80);
+      }, 1000);
+    }
+    
+    // Expertise cards animation
+    animateExpertiseCards();
+  }
+  
+  /**
+   * Reset home section animations
+   */
+  function resetHomeAnimations() {
+    // Reset typewriter
+    const typewriterElement = document.querySelector('.typewriter-text');
+    if (typewriterElement) {
+      // Stop the typewriter animation
+      if (typewriterElement.stopTypewriter) {
+        typewriterElement.stopTypewriter();
+      }
+      
+      // Clear any pending timeout
+      if (typewriterElement.timeoutId) {
+        clearTimeout(typewriterElement.timeoutId);
+        typewriterElement.timeoutId = null;
+      }
+      
+      // Reset visual state
+      typewriterElement.textContent = typewriterElement.dataset.text || 'Web Security Researcher & Full-Stack Developer';
+      typewriterElement.style.animation = '';
+      typewriterElement.style.borderRight = 'none';
+    }
+    
+    // Reset expertise cards
+    const cards = document.querySelectorAll('.home .expertise-card');
+    cards.forEach(card => {
+      card.classList.remove('animate-in');
     });
   }
   
